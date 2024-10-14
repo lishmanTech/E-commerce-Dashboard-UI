@@ -203,7 +203,6 @@
   }
   .chat-body {
     padding: 20px;
-    background-color: red;
     height: 100vh;
     overflow-y: scroll;
   }

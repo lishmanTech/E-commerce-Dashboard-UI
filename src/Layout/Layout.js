@@ -14,6 +14,7 @@ import review from "../Asset/Comment 2.svg";
 import menuuu from "../Asset/Mennuu.svg";
 import setting from "../Asset/Settings 1.svg";
 import search from "../Asset/search.svg";
+import cancel from "../Asset/Cancel.svg";
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 
@@ -94,7 +95,7 @@ const Layout = ({ children }) => {
         {!collapsed ? (
             <img src={setting} className="collapsed-Image" onClick={()=>setCollapsed(true)} alt="mennn" />
           ) : (
-            <img src={sb} className="collapsed-Image" onClick={()=>setCollapsed(false)} alt="sbb" />
+            <img src={cancel} className="collapsed-Image" onClick={()=>setCollapsed(false)} alt="sbb" />
           )}
       </div>
       {/* Dashboard */}
