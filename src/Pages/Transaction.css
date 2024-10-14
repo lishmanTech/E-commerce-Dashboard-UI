@@ -1,0 +1,126 @@
+.transaction-filter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 50%;
+    margin: 20px 0;
+    white-space: nowrap;
+    gap: 10px;
+}
+.transaction-table-header {
+    display: contents;
+    font-weight: bold; 
+    gap: 20px;
+  }
+  /* Container styles */
+.transaction-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header styles */
+  .transaction-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 10px;
+    gap: 15px;
+    white-space: nowrap;
+    border-bottom: 1px solid #E1E1E1
+  }
+  
+  .transaction-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #ffffff;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid #E1E1E1
+  }
+  
+  /* Individual column styles */
+  .transaction-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .transaction-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .transaction-item-name {
+    font-weight: bold;
+  }
+  
+  .transaction-chat {
+    color: #5e72e4;
+    text-decoration: none;
+  }
+  
+  .transaction-delivery,
+  .transaction-status {
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .status-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    object-fit: contain;  /* Ensures the images maintain their aspect ratio */
+  }
+  .actions-button{
+   text-align: right;
+  }
+  
+  /* Buttons styles */
+  .details-btn {
+    background-color: transparent;
+    border: none;
+    color: #5e72e4;
+    cursor: pointer;
+  }
+  
+  .process-btn {
+    background-color: #5e72e4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .process-btn:hover {
+    background-color: #324cdd;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .transaction-header, .transaction-row {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+  
+    .transaction-action {
+      text-align: left;
+      margin-top: 10px;
+    }
+    .actions-button{
+        text-align: left;
+        margin-top: 10px;
+       }
+  
+    .process-btn {
+      width: 100%;
+    }
+  }
+
+@media (max-width: 550px) {
+    .transaction-filter{
+        grid-template-columns: 1fr 1fr;
+    }
+}

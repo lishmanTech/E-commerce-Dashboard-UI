@@ -1,0 +1,78 @@
+/* Container for the promotions section */
+.promotions-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.promotions-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.promotions-container p {
+  color: #92929d;
+  margin-bottom: 20px;
+  font-family: Mulish;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Grid layout for promotions */
+.promotions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Style for individual promotion cards */
+.promotion-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.promotion-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Promotion info style */
+.promotion-info {
+  display: flex;
+  gap: 10px;
+}
+.promotion-info h3 {
+font-family: Mulish;
+font-size: 24px;
+text-align: left;
+font-size: 18px;
+margin: 0;
+color: #11142D;
+
+}
+
+.promotion-info p {
+font-family: Mulish;
+font-size: 16px;
+text-align: left;
+color: #92929D;
+font-size: 14px;
+}
+
+/* Arrow style */
+.promotion-arrow {
+  font-size: 24px;
+  color: #888;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .promotions-grid {
+    grid-template-columns: 1fr; /* Stacks the cards vertically on smaller screens */
+  }
+}

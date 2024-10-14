@@ -1,0 +1,137 @@
+/* Container Styling */
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .filter-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-buttons button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Grid Layout */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
+  /* Review Card Styling */
+  .review-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .review-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .review-info span {
+    color: #888;
+  }
+  
+  .review-date {
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+  
+  h4 {
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Reply Input and Button */
+  .review-reply {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .review-reply input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .review-reply button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .review-reply button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .filter-options {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .filter-buttons {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .tranfil{
+        display: flex;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .review-card {
+      padding: 15px;
+    }
+  
+    .review-reply input {
+      font-size: 0.8rem;
+    }
+  }
+  
