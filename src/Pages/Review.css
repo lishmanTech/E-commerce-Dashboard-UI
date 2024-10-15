@@ -1,6 +1,6 @@
 /* Container Styling */
 .reviews-container {
-    margin: 0 auto;
+  
     padding: 20px;
   }
   
@@ -117,6 +117,8 @@
   @media (max-width: 480px) {
     .reviews-grid {
         grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
     }
     .tranfil{
         display: flex;
