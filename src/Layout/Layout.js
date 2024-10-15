@@ -15,7 +15,7 @@ import menuuu from "../Asset/Mennuu.svg";
 import setting from "../Asset/Settings 1.svg";
 import search from "../Asset/search.svg";
 import cancel from "../Asset/Cancel.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Layout.css";
 
 const Layout = ({ children }) => {
@@ -72,7 +72,7 @@ const Layout = ({ children }) => {
   ];
   const menuToRender = dashboardmenu;
   return (
-    <div className="mainContainer">
+    <div className="layoutContainer">
       <div className="top-bar">
         <div className="headLogo">
           <img src={headlogo} className="proImage" alt="headlogo" />
@@ -122,19 +122,13 @@ const Layout = ({ children }) => {
                 </Link>
               );
             })}
-            {/* <li onClick={()=>{navigate("/")}} className="active"><img src={menu} className="listImage" alt="sta" />Dashboard</li>
-            <li onClick={()=>{navigate("/statistic")}}><img src={statistic} className="listImage" alt="sta" />Statistics</li>
-            <li onClick={()=>{navigate("/product")}}><img src={bag} className="listImage" alt="bag" />My Product</li>
-            <li onClick={()=>{navigate("/order")}}><img src={cart} className="listImage" alt="ca" />Orders</li>
-            <li onClick={()=>{navigate("/transaction")}}><img src={credit} className="listImage" alt="tran" />Transactions</li>
-            <li onClick={()=>{navigate("/promotion")}}><img src={promotion} className="listImage" alt="pro" />Promotions</li>
-            <li onClick={()=>{navigate("/message")}}><img src={message} className="listImage" alt="msg" />Messages</li>
-            <li onClick={()=>{navigate("/review")}}><img src={review} className="listImage" alt="rev" />Reviews</li>
-            <li onClick={()=>{navigate("/setting")}} className="lastt"><img src={setting} className="listImage" alt="rev" />Settings</li> */}
           </ul>
         </div>
         {/* Main Grid */}
-        <div className="grid-container">{children}</div>
+        <main>
+          <Outlet />
+        </main>
+        
       </div>
     </div>
   );

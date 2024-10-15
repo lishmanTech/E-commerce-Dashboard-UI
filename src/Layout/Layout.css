@@ -1,6 +1,8 @@
 /* src/App.css */
-.mainContainer {
-  height: 100vh;
+.layoutContainer {
+  height: 100vh; /* Ensure full height for the layout */
+  
+
 }
 .top-bar {
   display: flex;
@@ -8,6 +10,8 @@
   padding: 15px 20px;
   background: #ffffff;
   border-bottom: 1px solid #e1e1fb;
+  width: 100%;
+  position: static;
 }
 .headLogo {
   display: flex;
@@ -66,6 +70,12 @@ h2 {
 .sidebar {
   background: #ffffff;
   padding: 1.25rem;
+ 
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px; /* Fixed width for the sidebar */
+  height: 100vh; /* Full height */
 }
 .sideInfo {
   display: flex;
@@ -137,14 +147,17 @@ h2 {
 .dashboard {
   display: grid;
   grid-template-columns: 200px 1fr;
+  overflow-y: scroll;
 }
 
-.grid-container {
+main {
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  
   .top-bar {
     flex-direction: column;
     align-items: center;
@@ -157,6 +170,7 @@ h2 {
   }
   .sidebar{
     display: none;
+    width: 100%;
   }
   .sidebar ul li.active {
     background-color: #763fd7;
@@ -173,7 +187,17 @@ h2 {
    grid-template-columns: 1fr;
   }
   .collapsed-Image{
-    margin-right: 280px;
+    margin-right: 700px;
     display: flex;
+    float: left;
   }
+}
+
+@media(max-width: 450px) {
+  .collapsed-Image{
+    margin-right: 260px;
+    display: flex;
+    float: left;
+  }
+  
 }

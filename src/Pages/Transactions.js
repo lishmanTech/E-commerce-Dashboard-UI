@@ -72,7 +72,7 @@ const Transactions = () => {
       <Title title="Transaction Details"/ >
     <header className="product-header">
       <div className="header-buttons">
-        <button className="btn">Bulk Receipt Input</button>
+        <button className="btn" style={{marginBottom: "10px"}}>Bulk Receipt Input</button>
         <button className="btn">Download Transaction</button>
       </div>
     </header>
