@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
               const isActive = location.pathname === menu.path;
               return (
                 <Link to={menu.path} style={{ textDecoration: "none" }}>
-                  <li className={isActive && "active"}>
+                  <li onClick={()=>setCollapsed(false)} className={isActive && "active"}>
                     <img src={menu.images} className="listImage" alt="sta" />
                     {menu.name}
                   </li>

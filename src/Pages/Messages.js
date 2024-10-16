@@ -4,6 +4,8 @@ import setting from "../Asset/Settings 1.svg";
 import Title from "../Component/Title";
 
 const Messages = () => {
+  // State to manage search query
+
   const userOnline = [
     {
       id: 1,
@@ -26,153 +28,70 @@ const Messages = () => {
       unread: true,
       active: false,
     },
-]
-  // State to manage search query
-  const [searchQuery, setSearchQuery] = useState("");
+  ];
 
+  const [searchQuery, setSearchQuery] = useState("");
   const [messages] = useState(userOnline);
+  const [chats, setChats] = useState([
+    {
+    id: 1,
+    sender: "MY",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    time: "12:14",
+    fromSelf: false,
+  },
+  {
+    id: 2,
+    sender: "AS",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    time: "12:14",
+    fromSelf: true,
+  },
+  {
+    id: 3,
+    sender: "MY",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    time: "12:14",
+    fromSelf: false,
+  },
+  {
+    id: 4,
+    sender: "MY",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    time: "12:14",
+    fromSelf: true,
+  },
+  {
+    id: 5,
+    sender: "MY",
+    content: "Lorem ipsum dolor sit amet.",
+    time: "12:14",
+    fromSelf: false,
+  }]);
+  const [newchat, setNewchat] = useState('');
 
   // Filter the items based on the search query
   const newItems = messages.filter((item) =>
     item.sender.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const chat = [
-    {
-      id: 1,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 2,
-      sender: "AS",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 3,
-      sender: "MY",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: true,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 4,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      time: "12:14",
-      fromSelf: false,
-    },
-    {
-      id: 5,
-      sender: "MY",
-      content: "Lorem ipsum dolor sit amet.",
-      time: "12:14",
-      fromSelf: true,
-    },
-  ];
+  const handleSendMessage = () => {
+    if (newchat.trim()) {
+      const newestChat = {
+        sender: "MY",
+        content: newchat,
+        fromSelf: true,
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setChats([...chats, newestChat]);
+      setNewchat(""); // Clear the input field
+    }
+  };
+
   return (
     <div className="message-container">
       {/* Sidebar with message list */}
@@ -241,7 +160,7 @@ const Messages = () => {
                   </div>
                 </div>
                 {msg.unread && (
-                  <span className="message-unread">{chat.length}</span>
+                  <span className="message-unread">{chats.length}</span>
                 )}
               </li>
             ))
@@ -260,29 +179,37 @@ const Messages = () => {
         </div>
 
         <div className="chat-body">
-          {chat.map((message) => (
+          {chats.map((chat) => (
             <div
-              key={message.id}
-              className={`chat-message ${message.fromSelf ? "self" : ""}`}
+              key={chat.id}
+              className={`chat-message ${chat.fromSelf ? "self" : ""}`}
             >
-              {message.fromSelf === false && (
-                <span className="sender-initials">{message.sender}</span>
+              {chat.fromSelf === false && (
+                <span className="sender-initials">{chat.sender}</span>
               )}
               <div className="message-content">
-                <p>{message.content}</p>
+                <p>{chat.content}</p>
               </div>
-              {message.fromSelf && (
-                <span className="sender-initials">{message.sender}</span>
+              {chat.fromSelf && (
+                <span className="sender-initials">{chat.sender}</span>
               )}
-              <span className="message-time">{message.time}</span>
+              <span className="message-time">{chat.time}</span>
             </div>
           ))}
         </div>
 
         {/* Input section */}
         <div className="chat-input">
-          <input type="text" placeholder="Write message in here..." />
-          <button type="submit">Send</button>
+          <input
+            type="text"
+            placeholder="Write message in here..."
+            value={newchat}
+            onChange={(e) => setNewchat(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} // Send message on Enter key press
+          />
+          <button onClick={handleSendMessage} type="button">
+            Send
+          </button>
         </div>
       </div>
     </div>
