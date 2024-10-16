@@ -86,7 +86,7 @@ const Transactions = () => {
       <div className='filter-sale'>Refunded (0)</div>
     </nav>
 
-    <div className="search-filters">
+    <div className="search-filters" style={{whiteSpace: "nowrap"}}>
      <input type="text" placeholder="Search" />
       <span className='search-info'>Delivery</span>
       <img src={arrowdonw} id="proImage" style={{marginBottom: "5px", cursor: "pointer"}} alt="down" />
