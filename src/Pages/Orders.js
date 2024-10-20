@@ -359,7 +359,7 @@ const Orders = () => {
         <button className="sell-btn">Sell</button>
       </div>
     </div>
-  );j
+  );
 };
 
 export default Orders;
