@@ -17,11 +17,26 @@ import search from "../Asset/search.svg";
 import cancel from "../Asset/Cancel.svg";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Layout.css";
+import { useUserAuth } from "../Context/UserAuthContext";
 
 const Layout = ({ children }) => {
+  const { user, logOut, theme, toggleTheme } = useUserAuth();
   const location = useLocation();
 
   const [collapsed, setCollapsed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+    } catch (err) {
+      console.log(err.message)
+    }
+  };
 
   const dashboardmenu = [
     {
@@ -83,25 +98,44 @@ const Layout = ({ children }) => {
           <img src={search} alt="ser" />
         </div>
         <img src={notibell} className="proImage" alt="bell" />
-        <div className="profile">
+        <div className="profile"  onClick={handleToggle} >
           <img src={sb} className="proImage" alt="sbb" />
           <div className="proDetails">
-            <span className="proName">Shoo Bro Thoo</span>
+            <span className="proName">Welcome</span>
             <br />
-            <span className="proEmail">shobro@email.com</span>
+            <span className="proEmail">{user && user.email}</span>
           </div>
           <img src={arrowDown} className="proImage" alt="ad" />
+          {isOpen && (
+              <div className="drop-down">
+                <ul className="drop-ulist">
+                  <li className="droplist" onClick={handleLogout}>Sign Out</li>
+                  <hr/>
+                  <li className="droplist" onClick={toggleTheme}> Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode</li>
+                </ul>
+              </div>
+            )}
         </div>
         {!collapsed ? (
-            <img src={setting} className="collapsed-Image" onClick={()=>setCollapsed(true)} alt="mennn" />
-          ) : (
-            <img src={cancel} className="collapsed-Image" onClick={()=>setCollapsed(false)} alt="sbb" />
-          )}
+          <img
+            src={setting}
+            className="collapsed-Image"
+            onClick={() => setCollapsed(true)}
+            alt="mennn"
+          />
+        ) : (
+          <img
+            src={cancel}
+            className="collapsed-Image"
+            onClick={() => setCollapsed(false)}
+            alt="sbb"
+          />
+        )}
       </div>
       {/* Dashboard */}
       <div className="dashboard">
         {/* Sidebar */}
-        <div className={`sidebar ${collapsed ? 'collapsed-sidebar': ''}`}>
+        <div className={`sidebar ${collapsed ? "collapsed-sidebar" : ""}`}>
           <div className="sideInfo">
             <div className="sideImg"></div>
             <div className="sideUserInfo">
@@ -115,7 +149,10 @@ const Layout = ({ children }) => {
               const isActive = location.pathname === menu.path;
               return (
                 <Link to={menu.path} style={{ textDecoration: "none" }}>
-                  <li onClick={()=>setCollapsed(false)} className={isActive && "active"}>
+                  <li
+                    onClick={() => setCollapsed(false)}
+                    className={isActive && "active"}
+                  >
                     <img src={menu.images} className="listImage" alt="sta" />
                     {menu.name}
                   </li>
@@ -128,7 +165,6 @@ const Layout = ({ children }) => {
         <main>
           <Outlet />
         </main>
-        
       </div>
     </div>
   );

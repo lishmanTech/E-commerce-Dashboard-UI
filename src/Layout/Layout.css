@@ -1,8 +1,21 @@
 /* src/App.css */
+body.light {
+  --background-color: #fff;
+  
+}
+
+body.dark {
+  --background-color: #333;
+
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 .layoutContainer {
   height: 100vh; /* Ensure full height for the layout */
-  
-
 }
 .top-bar {
   display: flex;
@@ -62,11 +75,34 @@ h2 {
 }
 .profile {
   display: flex;
+  position: relative !important;
+  cursor: pointer;
 }
 .proImage {
   height: 30px;
 }
-
+.drop-down{
+  position: absolute;
+  top: 48px;
+  left: 0px;
+  background: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  width: 150px;
+  font-family: mulish;
+  white-space: nowrap;
+}
+.drop-ulist{
+  list-style-type: none;
+  padding: 10px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+.droplist{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .sidebar {
   background: #ffffff;
   padding: 1.25rem;

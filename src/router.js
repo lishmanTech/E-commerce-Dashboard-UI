@@ -9,8 +9,21 @@ import Promotions from "./Pages/Promotions"
 import Messages from "./Pages/Messages"
 import Reviews from "./Pages/Reviews"
 import Settings from "./Pages/Settings"
+import Login from "./Pages/PublicPages/Login";
+import SignUp from "./Pages/PublicPages/SignUp";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+
+  },
   {
     path: "/",
     element: (
@@ -22,39 +35,75 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute>
+           <Dashboard />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/statistic",
-        element: <Statistic />,
+        element: (
+          <ProtectedRoute>
+           <Statistic />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/product",
-        element: <Product />
+        element: (
+          <ProtectedRoute>
+           <Product />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/order",
-        element: <Orders />,
+        element: (
+          <ProtectedRoute>
+           <Orders />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/transaction",
-        element: <Transactions />,
+        element: (
+          <ProtectedRoute>
+           <Transactions />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/promotion",
-        element: <Promotions />,
+        element: (
+          <ProtectedRoute>
+           <Promotions />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/message",
-        element: <Messages />,
+        element: (
+          <ProtectedRoute>
+           <Messages />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/review",
-        element: <Reviews />,
+        element: (
+          <ProtectedRoute>
+           <Reviews />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
       {
         path: "/setting",
-        element: <Settings />,
+        element: (
+          <ProtectedRoute>
+           <Settings />   {/* I wrapped the routes i want to protect with the protected routes */}
+          </ProtectedRoute>
+        )
       },
     ],
   },

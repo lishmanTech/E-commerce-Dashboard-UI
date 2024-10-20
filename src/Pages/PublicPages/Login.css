@@ -1,0 +1,137 @@
+  
+  .page-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #333;
+    font-family: mulish;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #555;
+    font-family: mulish;
+  }
+  
+  .loginInput {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: mulish;
+  }
+  
+  .loginInput:focus {
+    border-color: #f5576c;
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: mulis;
+  }
+  
+  .login-btn:hover {
+    background-color: #f093fb;
+  }
+  .google-btn{
+    background: #4285F4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .login-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-footer p {
+    font-size: 14px;
+    color: #777;
+    font-family: mulish;
+  }
+  
+  .login-footer a {
+    color: #f5576c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .login-footer a:hover {
+    color: #f093fb;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 100%;
+      padding: 30px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-container {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .login-btn {
+      font-size: 14px;
+    }
+  }
+  

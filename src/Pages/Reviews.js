@@ -1,50 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Review.css";
 import Title from "../Component/Title";
 import emoji from "../Asset/Emoji.svg";
 import upload from "../Asset/Upload.svg";
 
-const reviewsData = [
-  {
-    id: 1,
-    title: "Shoo Phar Dhie",
-    name: "Muhammed Bukar",
-    price: "$25",
-    date: "Sunday, 23 February 2021",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  // Duplicate for more review cards
-  {
-    id: 2,
-    title: "Shoo Phar Dhie",
-    name: "Eljoe Smith",
-    price: "$25",
-    date: "Sunday, 23 February 2021",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    title: "Ejoe Smith",
-    name: "My Geee",
-    price: "$25",
-    date: "Sunday, 23 February 2021",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    title: "Sylvanus Boss",
-    name: "My Geee",
-    price: "$25",
-    date: "Sunday, 23 February 2021",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-];
-
 function Reviews() {
+  const [reviews] = useState([
+    {
+      id: 1,
+      title: "Shoo Phar Dhie",
+      product: "Headphone Joss",
+      date: "Sunday, 23 February 2021",
+      price: "$25",
+    },
+    {
+      id: 2,
+      title: "Shoo Phar Dhie",
+      product: "Headphone Joss",
+      date: "Sunday, 23 February 2021",
+      price: "$25",
+    },
+    {
+      id: 3,
+      title: "Shoo Phar Dhie",
+      product: "Headphone Joss",
+      date: "Sunday, 23 February 2021",
+      price: "$25",
+    },
+    {
+      id: 4,
+      title: "Shoo Phar Dhie",
+      product: "Headphone Joss",
+      date: "Sunday, 23 February 2021",
+      price: "$25",
+    },
+  ]);
+
+  const [chats, setChats] = useState({});
+  const [messages, setMessages] = useState({}); // To manage input values for each review
+
+  const handleSendMessage = (id) => {
+    const message = messages[id]?.trim();
+    if (message) {
+      setChats((prevChats) => ({
+        ...prevChats,
+        [id]: [...(prevChats[id] || []), message],
+      }));
+      setMessages((prevMessages) => ({ ...prevMessages, [id]: "" }));
+    }
+  };
+
+  const handleKeyPress = (e, id) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSendMessage(id);
+    }
+  };
+
   return (
     <div className="reviews-container">
       <Title title="Reviews" />
@@ -55,7 +67,7 @@ function Reviews() {
       </nav>
 
       <div className="reviews-grid">
-        {reviewsData.map((review) => (
+        {reviews.map((review) => (
           <div key={review.id} className="review-card">
             <div className="review-header">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -82,7 +94,14 @@ function Reviews() {
               </div>
             </div>
             <p style={{ marginBottom: "10px", fontFamily: "mulish" }}>
-              {review.description}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <br />
+              {chats[review.id]?.map((msg, idx) => (
+                <div key={idx} className="chat-message">
+                  {msg}
+                </div>
+              ))}
             </p>
             <div className="review-reply">
               <div
@@ -92,7 +111,7 @@ function Reviews() {
                   display: "flex",
                   alignItems: "center",
                   width: "100%",
-                   marginRight: "5px"
+                  marginRight: "5px",
                 }}
               >
                 <input
@@ -101,14 +120,22 @@ function Reviews() {
                     outline: "none",
                     background: "none",
                   }}
-                  type="text"
+                  value={messages[review.id] || ""}
+                  onChange={(e) =>
+                    setMessages({ ...messages, [review.id]: e.target.value })
+                  }
+                  onKeyDown={(e) => handleKeyPress(e, review.id)}
                   placeholder="Write message in here..."
                 />
                 <img src={emoji} alt="emoo" />
                 <img src={upload} alt="up" />
               </div>
-              <button style={{borderRadius: "50%", background: "#5541D7"}} type="submit">
-              &gt;
+              <button
+                onClick={() => handleSendMessage(review.id)}
+                style={{ borderRadius: "50%", background: "#5541D7" }}
+                type="submit"
+              >
+                &gt;
               </button>
             </div>
           </div>
